@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,8 @@ builder.Host.ConfigureAppConfiguration(builder =>
         options
             .Connect(connectionString)
             //.Select(KeyFilter.Any, LabelFilter.Null)
-            .Select(KeyFilter.Any, "Staging")
-        ); ;
+            .Select(KeyFilter.Any, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
+            );
 });
 builder.Services.AddControllersWithViews();
 
