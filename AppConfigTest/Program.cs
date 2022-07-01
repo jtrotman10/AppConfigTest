@@ -11,10 +11,11 @@ var connectionString = builder.Configuration.GetConnectionString("AppConfig");
 builder.Host.ConfigureAppConfiguration(builder =>
 {
     //Connect to your App Config Store using the connection string
+    // get values with no labels and labels that match HostingEnvironment (Production, Staging, etc)
     builder.AddAzureAppConfiguration(options =>
         options
             .Connect(connectionString)
-            //.Select(KeyFilter.Any, LabelFilter.Null)
+            .Select(KeyFilter.Any, LabelFilter.Null)
             .Select(KeyFilter.Any, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
             );
 });
