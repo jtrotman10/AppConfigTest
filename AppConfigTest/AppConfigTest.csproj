@@ -4,6 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>1d253a3c-eaf6-426d-9cb1-0c6d87493d88</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="5.0.0" />
+  </ItemGroup>
 
 </Project>
